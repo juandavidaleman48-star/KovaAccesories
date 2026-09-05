@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KOVA ACCESSORIES | Official Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131b2e;
+            --card-bg: rgba(22, 31, 52, 0.85);
+            --card-border: rgba(99, 102, 241, 0.2);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-primary: #6366f1;
+            --accent-glow: #818cf8;
+            --neon-cyan: #06b6d4;
+            --whatsapp-green: #25d366;
+            --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            --shadow-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+            /* ESTILOS GLASS CATEGORÍAS (MODO OSCURO) */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-text: #f8fafc;
+            --glass-hover: rgba(255, 255, 255, 0.12);
+            --glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            --glass-wrapper-bg: rgba(11, 15, 25, 0.7);
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-primary: #f8fafc;
+                --bg-secondary: #ffffff;
+                --card-bg: rgba(255, 255, 255, 0.95);
+                --card-border: rgba(99, 102, 241, 0.15);
+                --text-main: #0f172a;
+                --text-muted: #64748b;
+                --shadow-glow: 0 8px 25px 0 rgba(0, 0, 0, 0.08);
+
+                /* ESTILOS GLASS CATEGORÍAS (MODO CLARO) */
+                --glass-bg: rgba(255, 255, 255, 0.65);
+                --glass-border: rgba(99, 102, 241, 0.25);
+                --glass-text: #1e293b;
+                --glass-hover: rgba(255, 255, 255, 0.9);
+                --glass-shadow: 0 4px 15px rgba(99, 102, 241, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+                --glass-wrapper-bg: rgba(248, 250, 252, 0.75);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVBAR */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 60px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid var(--accent-primary);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+        }
+
+        .brand-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            background: linear-gradient(90deg, #818cf8, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .social-link.ig { background: var(--instagram-gradient); }
+        .social-link.wa { background: var(--whatsapp-green); }
+
+        .cart-btn {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-glow));
+            color: white;
+            border: none;
+            padding: 0.5rem 0.9rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+        }
+
+        .badge {
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+        }
+
+        /* HERO BANNER */
+        .hero {
+            text-align: center;
+            padding: 1.8rem 1rem 0.8rem;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* BARRA Y BOTONES DE CATEGORÍAS - GLASS OPTIMIZADO */
+        .categories-wrapper {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 60px;
+            z-index: 999;
+            background: var(--glass-wrapper-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .categories {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 4px 6px;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            max-width: 100%;
+        }
+
+        .categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-btn {
+            background: var(--glass-bg);
+            color: var(--glass-text);
+            border: 1px solid var(--glass-border);
+            padding: 0.55rem 1.1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .cat-btn:hover {
+            background: var(--glass-hover);
+            transform: translateY(-1px);
+        }
+
+        .cat-btn.active {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.95));
+            color: #ffffff !important;
+            border-color: rgba(165, 180, 252, 0.6);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+            font-weight: 700;
+        }
+
+        /* CONTAINER Y GRID DE PRODUCTOS */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 2.5rem;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-glow);
+            position: relative;
+        }
+
+        .product-card.added-anim {
+            animation: pulseCard 0.4s ease-in-out;
+            border-color: var(--whatsapp-green) !important;
+        }
+
+        @keyframes pulseCard {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.96); }
+            100% { transform: scale(1); }
+        }
+
+        .img-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-cat {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.2rem;
+        }
+
+        .product-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            line-height: 1.25;
+            word-break: break-word;
+        }
+
+        .product-price {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: auto;
+            margin-bottom: 0.7rem;
+        }
+
+        .add-btn {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--accent-primary);
+            padding: 0.6rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .add-btn.added {
+            background: var(--whatsapp-green) !important;
+            color: white !important;
+            border-color: var(--whatsapp-green) !important;
+            box-shadow: 0 0 12px rgba(37, 211, 102, 0.5) !important;
+        }
+
+        /* MODAL Y CARRITO */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 380px;
+            height: 100%;
+            background: var(--bg-secondary);
+            z-index: 1002;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            padding: 1.2rem;
+            transition: right 0.3s ease-in-out;
+        }
+
+        .cart-modal.open { right: 0; }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card-bg);
+            padding: 0.7rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cart-item-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .cart-item-details { flex-grow: 1; }
+
+        .cart-item-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .cart-item-price {
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+            font-weight: 700;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .qty-btn {
+            background: var(--card-border);
+            color: var(--text-main);
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-footer {
+            border-top: 1px solid var(--card-border);
+            padding-top: 1rem;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+        }
+
+        .checkout-wa-btn {
+            width: 100%;
+            background: var(--whatsapp-green);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--card-border);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 0.8rem 0;
+        }
+
+        /* REGISTRO Y ADAPTACIÓN PARA MÓVIL */
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.65rem;
+            }
+
+            .container {
+                padding: 1rem 0.6rem 2rem;
+            }
+
+            .categories-wrapper {
+                justify-content: flex-start;
+                padding: 0.5rem 0.6rem;
+            }
+
+            .product-info {
+                padding: 0.6rem;
+            }
+
+            .product-title {
+                font-size: 0.8rem;
+                height: 2.2em;
+                overflow: hidden;
+            }
+
+            .product-price {
+                font-size: 0.95rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .add-btn {
+                padding: 0.5rem 0.2rem;
+                font-size: 0.72rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand">
+            <img src="309928.png" alt="KOVA" class="logo-img" onerror="this.src='https://via.placeholder.com/38/6366f1/ffffff?text=K'">
+            <span class="brand-text">KOVA</span>
+        </a>
+
+        <div class="nav-actions">
+            <a href="https://instagram.com/kova.accessories.cr" target="_blank" class="social-link ig">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/50685079924" target="_blank" class="social-link wa">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <button class="cart-btn" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="badge" id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>KOVA ACCESSORIES</h1>
+        <p>Estilo, audio y tecnología al alcance de un clic</p>
+    </section>
+
+    <div class="categories-wrapper">
+        <div class="categories">
+            <button class="cat-btn active" onclick="filterCat('todos', this)">Todos</button>
+            <button class="cat-btn" onclick="filterCat('audifonos', this)">Audífonos</button>
+            <button class="cat-btn" onclick="filterCat('parlantes', this)">Parlantes</button>
+            <button class="cat-btn" onclick="filterCat('cargadores', this)">Cargadores</button>
+            <button class="cat-btn" onclick="filterCat('adaptadores', this)">Adaptadores</button>
+            <button class="cat-btn" onclick="filterCat('ropa', this)">Camisas & Tenis</button>
+            <button class="cat-btn" onclick="filterCat('protectores', this)">Protectores</button>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="grid" id="product-grid"></div>
+    </main>
+
+    <div class="modal-overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h3>Tu Pedido</h3>
+            <button class="close-btn" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span style="color: var(--accent-primary);">₡<span id="cart-total">0</span></span>
+            </div>
+            <button class="checkout-wa-btn" onclick="sendToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>KOVA ACCESSORIES</strong> &copy; 2026</p>
+        <div class="footer-socials">
+            <a href="https://instagram.com/kova.accessories.cr" target="_blank" class="social-link ig"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/50685079924" target="_blank" class="social-link wa"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <p style="font-size: 0.75rem;">Envíos a todo Costa Rica 🇨🇷</p>
+    </footer>
+
+    <script>
+        const fallbackImg = "https://via.placeholder.com/300/131b2e/818cf8?text=KOVA+STORE";
+
+        const products = [
+            { id: 1, name: "Airpods Pro 3", category: "audifonos", price: 20000, img: "airpodspro3.jpeg" },
+            { id: 2, name: "Airpods 4", category: "audifonos", price: 16500, img: "airpods4.jpg" },
+            { id: 3, name: "Airpods Por 2", category: "audifonos", price: 18500, img: "airpodspro2.png" },
+            { id: 4, name: "Airpods 3", category: "audifonos", price: 14500, img: "Airpods3.jpg" },
+            { id: 5, name: "Audifonos Samsung 3.5 aux", category: "audifonos", price: 2500, img: "audifonosdecablesamsung.png" },
+            { id: 6, name: "Auriculares Samsung AKG 3.5aux", category: "audifonos", price: 2500, img: "Auriculares Samsung AKG 3.5aux.jpg" },
+            { id: 7, name: "Audífonos Lightning Conexión Directa", category: "audifonos", price: 9200, img: "Audífonos Lightning Conexión Directa.jpg" },
+            { id: 8, name: "Airpods Max", category: "audifonos", price: 9500, img: "airpodsmax.jpg" },
+            { id: 9, name: "Power Beats Pro", category: "audifonos", price: 19500, img: "AuricularesPowerBeatsPro.jpg" },
+            { id: 10, name: "Parlante Portátil KOVA", category: "parlantes", price: 22000, img: "parlante.jpeg" },
+            { id: 11, name: "Cargador Inalámbrico 15W", category: "cargadores", price: 12000, img: "cargadorinalambrico.jpeg" },
+            { id: 12, name: "Adaptador USB-C a Lightning", category: "adaptadores", price: 7500, img: "adaptadorusb.jpeg" },
+            { id: 13, name: "Camisa Casual KOVA", category: "ropa", price: 13000, img: "camisacasual.jpeg" },
+            { id: 14, name: "Tenis Sport KOVA", category: "ropa", price: 28000, img: "tenissport.jpeg" },
+            { id: 15, name: "Protector de Pantalla de Vidrio Templado", category: "protectores", price: 5000, img: "protectorvidrio.jpeg"},
+            { id: 16, name: "Airpods Pro 2", category: "audifonos", price: 18000, img: "airpodspro2.jpeg"},
+            { id: 17, name: "Parlante Bluetooth KOVA", category: "parlantes", price: 20000, img: "parlantebluetooth.jpeg"}
+        ];
+
+        let cart = [];
+
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = items.map(p => `
+                <div class="product-card" id="card-${p.id}">
+                    <div class="img-container">
+                        <img src="${p.img}" alt="${p.name}" class="product-img" onerror="this.onerror=null; this.src='${fallbackImg}';">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">${p.category}</span>
+                        <h3 class="product-title">${p.name}</h3>
+                        <div class="product-price">₡${p.price.toLocaleString()}</div>
+                        <button class="add-btn" id="btn-${p.id}" onclick="addToCart(${p.id}, this)">
+                            <i class="fa-solid fa-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCat(cat, btn) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            if (cat === 'todos') renderProducts(products);
+            else renderProducts(products.filter(p => p.category === cat));
+        }
+
+        function addToCart(id, btnElement) {
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                const product = products.find(p => p.id === id);
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCart();
+
+            if (btnElement) {
+                const cardElement = document.getElementById(`card-${id}`);
+                btnElement.classList.add('added');
+                btnElement.innerHTML = `<i class="fa-solid fa-check"></i> ¡Listo!`;
+                if (cardElement) cardElement.classList.add('added-anim');
+
+                setTimeout(() => {
+                    btnElement.classList.remove('added');
+                    btnElement.innerHTML = `<i class="fa-solid fa-plus"></i> Agregar`;
+                    if (cardElement) cardElement.classList.remove('added-anim');
+                }, 900);
+            }
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-count').innerText = count;
+
+            const cartItems = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                cartItems.innerHTML = `<p style="text-align:center; color: var(--text-muted); margin-top:2rem;">El carrito está vacío 🛒</p>`;
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.img}" class="cart-item-img" onerror="this.onerror=null; this.src='${fallbackImg}';">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">₡${(item.price * item.qty).toLocaleString()}</div>
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+                                <span>${item.qty}</span>
+                                <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('cart-total').innerText = total.toLocaleString();
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-modal').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        function sendToWhatsApp() {
+            if (cart.length === 0) {
+                alert("Agrega productos antes de realizar el pedido.");
+                return;
+            }
+
+            const phone = "50685079924";
+            let msg = "¡Hola *KOVA ACCESSORIES*! 👋 Quisiera realizar el siguiente pedido:\n\n";
+            
+            cart.forEach(item => {
+                msg += `▪️ *${item.qty}x* ${item.name} - ₡${(item.price * item.qty).toLocaleString()}\n`;
+            });
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            msg += `\n💰 *Total a pagar:* ₡${total.toLocaleString()}\n\n¿Tienen disponibilidad?`;
+
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        renderProducts(products);
+    </script>
+</body>
+</html>
