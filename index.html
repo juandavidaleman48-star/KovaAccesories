@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>KOVA ACCESSORIES | Official Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fuente Syne desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0b0f19;
@@ -15,18 +17,17 @@
             --text-muted: #94a3b8;
             --accent-primary: #6366f1;
             --accent-glow: #818cf8;
-            --neon-cyan: #06b6d4;
             --whatsapp-green: #25d366;
             --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             --shadow-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
-            /* ESTILOS GLASS CATEGORÍAS (MODO OSCURO) */
+            /* ESTILOS GLASS CATEGORÍAS */
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.15);
             --glass-text: #f8fafc;
             --glass-hover: rgba(255, 255, 255, 0.12);
-            --glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            --glass-wrapper-bg: rgba(11, 15, 25, 0.7);
+            --glass-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --glass-wrapper-bg: rgba(11, 15, 25, 0.95);
         }
 
         @media (prefers-color-scheme: light) {
@@ -39,13 +40,12 @@
                 --text-muted: #64748b;
                 --shadow-glow: 0 8px 25px 0 rgba(0, 0, 0, 0.08);
 
-                /* ESTILOS GLASS CATEGORÍAS (MODO CLARO) */
                 --glass-bg: rgba(255, 255, 255, 0.65);
                 --glass-border: rgba(99, 102, 241, 0.25);
                 --glass-text: #1e293b;
                 --glass-hover: rgba(255, 255, 255, 0.9);
-                --glass-shadow: 0 4px 15px rgba(99, 102, 241, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-                --glass-wrapper-bg: rgba(248, 250, 252, 0.75);
+                --glass-shadow: 0 4px 15px rgba(99, 102, 241, 0.08);
+                --glass-wrapper-bg: rgba(248, 250, 252, 0.95);
             }
         }
 
@@ -67,20 +67,31 @@
             overflow-x: hidden;
         }
 
-        /* HEADER & NAVBAR */
+        /* 📌 BLOQUE CONTENEDOR FIJO COMPLETO */
+        .sticky-wrapper {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--glass-wrapper-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* HEADER TOP BAR */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.8rem 5%;
-            background: var(--bg-secondary);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--card-border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
             height: 60px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--card-border);
         }
 
         .brand {
@@ -100,9 +111,9 @@
         }
 
         .brand-text {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 800;
-            letter-spacing: 1.2px;
+            letter-spacing: 1px;
             background: linear-gradient(90deg, #818cf8, #06b6d4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -151,44 +162,45 @@
             font-size: 0.7rem;
         }
 
-        /* HERO BANNER */
+        /* 🎯 BANNER HERO CENTRADO DENTRO DE LA BARRA FIJA */
         .hero {
             text-align: center;
-            padding: 1.8rem 1rem 0.8rem;
-            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+            padding: 0.9rem 1rem 0.4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero h1 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 800;
-            margin-bottom: 0.3rem;
+            letter-spacing: 0.8px;
+            background: linear-gradient(90deg, #818cf8, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2px;
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.78rem;
+            font-weight: 500;
         }
 
-        /* BARRA Y BOTONES DE CATEGORÍAS - GLASS OPTIMIZADO */
+        /* BARRA Y BOTONES DE CATEGORÍAS */
         .categories-wrapper {
             width: 100%;
-            padding: 0.7rem 1rem;
+            padding: 0.4rem 1rem 0.6rem;
             display: flex;
             justify-content: center;
-            position: sticky;
-            top: 60px;
-            z-index: 999;
-            background: var(--glass-wrapper-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--glass-border);
         }
 
         .categories {
             display: flex;
             gap: 8px;
             overflow-x: auto;
-            padding: 4px 6px;
+            padding: 2px 4px;
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
             max-width: 100%;
@@ -202,15 +214,13 @@
             background: var(--glass-bg);
             color: var(--glass-text);
             border: 1px solid var(--glass-border);
-            padding: 0.55rem 1.1rem;
+            padding: 0.5rem 1rem;
             border-radius: 20px;
             cursor: pointer;
             white-space: nowrap;
             font-weight: 600;
             font-size: 0.8rem;
             flex-shrink: 0;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             box-shadow: var(--glass-shadow);
         }
 
@@ -223,11 +233,11 @@
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.95));
             color: #ffffff !important;
             border-color: rgba(165, 180, 252, 0.6);
-            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45);
             font-weight: 700;
         }
 
-        /* CONTAINER Y GRID DE PRODUCTOS */
+        /* GRID Y PRODUCTOS */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -252,7 +262,6 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: var(--shadow-glow);
-            position: relative;
         }
 
         .product-card.added-anim {
@@ -300,7 +309,8 @@
         }
 
         .product-title {
-            font-size: 0.9rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 0.4rem;
             line-height: 1.25;
@@ -338,7 +348,7 @@
             box-shadow: 0 0 12px rgba(37, 211, 102, 0.5) !important;
         }
 
-        /* MODAL Y CARRITO */
+        /* MODAL CARRITO */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -422,6 +432,7 @@
         .cart-item-details { flex-grow: 1; }
 
         .cart-item-title {
+            font-family: 'Syne', sans-serif;
             font-size: 0.85rem;
             font-weight: 700;
         }
@@ -495,7 +506,6 @@
             margin: 0.8rem 0;
         }
 
-        /* REGISTRO Y ADAPTACIÓN PARA MÓVIL */
         @media (max-width: 600px) {
             .grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -508,7 +518,7 @@
 
             .categories-wrapper {
                 justify-content: flex-start;
-                padding: 0.5rem 0.6rem;
+                padding: 0.3rem 0.6rem 0.5rem;
             }
 
             .product-info {
@@ -516,7 +526,7 @@
             }
 
             .product-title {
-                font-size: 0.8rem;
+                font-size: 0.82rem;
                 height: 2.2em;
                 overflow: hidden;
             }
@@ -530,45 +540,55 @@
                 padding: 0.5rem 0.2rem;
                 font-size: 0.72rem;
             }
+
+            .hero h1 {
+                font-size: 1.15rem;
+            }
+
+            .hero p {
+                font-size: 0.72rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="brand">
-            <img src="309928.png" alt="KOVA" class="logo-img" onerror="this.src='https://via.placeholder.com/38/6366f1/ffffff?text=K'">
-            <span class="brand-text">KOVA</span>
-        </a>
-
-        <div class="nav-actions">
-            <a href="https://instagram.com/kova.accessories.cr" target="_blank" class="social-link ig">
-                <i class="fa-brands fa-instagram"></i>
+    <div class="sticky-wrapper">
+        <header>
+            <a href="#" class="brand">
+                <img src="logodekova.png" alt="KOVA" class="logo-img" onerror="this.src='https://via.placeholder.com/38/6366f1/ffffff?text=K'">
+                <span class="brand-text">KOVA</span>
             </a>
-            <a href="https://wa.me/50685079924" target="_blank" class="social-link wa">
-                <i class="fa-brands fa-whatsapp"></i>
-            </a>
-            <button class="cart-btn" onclick="toggleCart()">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="badge" id="cart-count">0</span>
-            </button>
-        </div>
-    </header>
 
-    <section class="hero">
-        <h1>KOVA ACCESSORIES</h1>
-        <p>Estilo, audio y tecnología al alcance de un clic</p>
-    </section>
+            <div class="nav-actions">
+                <a href="https://instagram.com/kova.accessories.cr" target="_blank" class="social-link ig">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/50685079924" target="_blank" class="social-link wa">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </button>
+            </div>
+        </header>
 
-    <div class="categories-wrapper">
-        <div class="categories">
-            <button class="cat-btn active" onclick="filterCat('todos', this)">Todos</button>
-            <button class="cat-btn" onclick="filterCat('audifonos', this)">Audífonos</button>
-            <button class="cat-btn" onclick="filterCat('parlantes', this)">Parlantes</button>
-            <button class="cat-btn" onclick="filterCat('cargadores', this)">Cargadores</button>
-            <button class="cat-btn" onclick="filterCat('adaptadores', this)">Adaptadores</button>
-            <button class="cat-btn" onclick="filterCat('ropa', this)">Camisas & Tenis</button>
-            <button class="cat-btn" onclick="filterCat('protectores', this)">Protectores</button>
+        <section class="hero">
+            <h1>KOVA ACCESSORIES</h1>
+            <p>Estilo, audio y tecnología al alcance de un clic</p>
+        </section>
+
+        <div class="categories-wrapper">
+            <div class="categories">
+                <button class="cat-btn active" onclick="filterCat('todos', this)">Todos</button>
+                <button class="cat-btn" onclick="filterCat('audifonos', this)">Audífonos</button>
+                <button class="cat-btn" onclick="filterCat('parlantes', this)">Parlantes</button>
+                <button class="cat-btn" onclick="filterCat('cargadores', this)">Cargadores</button>
+                <button class="cat-btn" onclick="filterCat('adaptadores', this)">Adaptadores</button>
+                <button class="cat-btn" onclick="filterCat('ropa', this)">Camisas & Tenis</button>
+                <button class="cat-btn" onclick="filterCat('protectores', this)">Protectores</button>
+            </div>
         </div>
     </div>
 
@@ -609,21 +629,66 @@
         const products = [
             { id: 1, name: "Airpods Pro 3", category: "audifonos", price: 20000, img: "airpodspro3.jpeg" },
             { id: 2, name: "Airpods 4", category: "audifonos", price: 16500, img: "airpods4.jpg" },
-            { id: 3, name: "Airpods Por 2", category: "audifonos", price: 18500, img: "airpodspro2.png" },
+            { id: 3, name: "Airpods Pro 2", category: "audifonos", price: 18500, img: "airpodspro2.png" },
             { id: 4, name: "Airpods 3", category: "audifonos", price: 14500, img: "Airpods3.jpg" },
             { id: 5, name: "Audifonos Samsung 3.5 aux", category: "audifonos", price: 2500, img: "audifonosdecablesamsung.png" },
             { id: 6, name: "Auriculares Samsung AKG 3.5aux", category: "audifonos", price: 2500, img: "Auriculares Samsung AKG 3.5aux.jpg" },
             { id: 7, name: "Audífonos Lightning Conexión Directa", category: "audifonos", price: 9200, img: "Audífonos Lightning Conexión Directa.jpg" },
             { id: 8, name: "Airpods Max", category: "audifonos", price: 9500, img: "airpodsmax.jpg" },
             { id: 9, name: "Power Beats Pro", category: "audifonos", price: 19500, img: "AuricularesPowerBeatsPro.jpg" },
-            { id: 10, name: "Parlante Portátil KOVA", category: "parlantes", price: 22000, img: "parlante.jpeg" },
-            { id: 11, name: "Cargador Inalámbrico 15W", category: "cargadores", price: 12000, img: "cargadorinalambrico.jpeg" },
-            { id: 12, name: "Adaptador USB-C a Lightning", category: "adaptadores", price: 7500, img: "adaptadorusb.jpeg" },
-            { id: 13, name: "Camisa Casual KOVA", category: "ropa", price: 13000, img: "camisacasual.jpeg" },
-            { id: 14, name: "Tenis Sport KOVA", category: "ropa", price: 28000, img: "tenissport.jpeg" },
-            { id: 15, name: "Protector de Pantalla de Vidrio Templado", category: "protectores", price: 5000, img: "protectorvidrio.jpeg"},
-            { id: 16, name: "Airpods Pro 2", category: "audifonos", price: 18000, img: "airpodspro2.jpeg"},
-            { id: 17, name: "Parlante Bluetooth KOVA", category: "parlantes", price: 20000, img: "parlantebluetooth.jpeg"}
+            { id: 10,name: "Beats Fit Pro", category: "audifonos", price: 13500, img: "AuricularesBeatsFitPro.jpg" },
+            { id: 11,name: "M-D8", category: "audifonos", price: 12000, img: "AudífonosM-D8.jpg" },
+            { id: 12,name: "Samsung Buds 901", category: "audifonos", price: 13000, img: "AuricularesSamsungBuds 901.jpg" },
+            { id: 13,name: "M21", category: "audifonos", price: 9000, img: "AudífonosM21.jpg" },
+            { id: 14,name: "F200", category: "audifonos", price: 13500, img: "Audífonos F200.jpg" },
+            { id: 15,name: "TWS-33", category: "audifonos", price: 9500, img: "Audífonos TWS-33.jpg" },
+            { id: 16,name: "TWS-09", category: "audifonos", price: 9500, img: "Audífonos TWS-09.jpg" },
+            { id: 17,name: "KT-10", category: "audifonos", price: 10000, img: "Audífonos KT-10.jpg" },
+            { id: 18,name: "Beats Pro", category: "audifonos", price: 9200, img: "Audifonos Solo Pro.jpg" },
+            { id: 19,name: "208B", category: "audifonos", price: 9550, img: "Audífonos 208B.jpg" },
+            { id: 20,name: "Capitan America", category: "audifonos", price: 8500, img: "Audifonos Capitan American.jpg" },
+            { id: 21,name: "Kuromi M601H", category: "audifonos", price: 11600, img: "Audifonos Kuromi M601H.jpg" },
+            { id: 22,name: "MSL 15", category: "audifonos", price: 5500, img: "MSL 15.jpg" },
+            { id: 23,name: "AH-A38", category: "audifonos", price: 9500, img: "AH-A38.jpg" },
+            { id: 23,name: "M8000", category: "audifonos", price: 11000, img: "M8000 .jpg" },
+            { id: 23,name: "Lanyer+TWS-08", category: "audifonos", price: 9500, img: "Combo Lanyer+Audifonos TWS-08.jpg" },
+            { id: 23,name: "TWS-11+Llavero", category: "audifonos", price: 14000, img: "Audifonos+Llavero TWS-11.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
+            { id: 23,name: "Audifono Airpods", category: "audifonos", price: 14000, img: "ejemplo.jpg" },
         ];
 
         let cart = [];
